@@ -5,28 +5,30 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class TaskBar : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class TaskBar : MonoBehaviour
 {
-    public float test = 10f;
-    private Image backGround;
-    private Button button;
-    // Start is called before the first frame update
-    void Start()
-    {
-        backGround = GetComponentInChildren<Image>();
-    }
+    public GameObject currentScreen;
+    public GameObject powerButton;
+    public GameObject clock;
+    public GameObject studioDirect;
+    public GameObject communityDirect;
+    public GameObject wikiDirect;
 
-    // Update is called once per frame
-    void Update()
+    public void SetScreen(string siteName)
     {
+        switch (siteName)
+        {
+            case "Studio":
+                Debug.Log("Studio opened");
+                break;
 
-    }
-    public void OnPointerEnter(PointerEventData data)
-    {
-        backGround.color = new Color(0, 0, 0, 0.4f);
-    }
-    public void OnPointerExit(PointerEventData data)
-    {
-        backGround.color = new Color(0, 0, 0, 0);
+            case "Community":
+                Debug.Log("Community opened");
+                break;
+
+            case "Wiki":
+                Debug.Log("Wiki opened");
+                break;
+        }
     }
 }
