@@ -1,6 +1,8 @@
 using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
+using UnityEditor;
 using UnityEngine;
 
 public class Investigaion : MonoBehaviour
@@ -17,23 +19,45 @@ public class Investigaion : MonoBehaviour
         
     }
 
-    private GameObject memoWithText = GameObject.Find("OnlyMemos_0");
-    private GameObject memoWithoutText = GameObject.Find("OnlyMemos_1");
+    public GameObject memoWithText;
+    public GameObject memoWithoutText;
 
-    public Transform spawnPoint;
+    Transform spawnPoint;
+
+    public Player mainPlayer;
 
     public void OnButtonClicked_WithText()
     {
-        SpawnObject(memoWithText);
+        mainPlayer.AddNewMemo(memoWithText);
     }
 
     public void OnButtonClicked_WithoutText()
     {
-        SpawnObject(memoWithoutText);
+        mainPlayer.AddNewMemo(memoWithoutText);
     }
-    
-    private void SpawnObject(GameObject inTarget)
+
+    private float memoGap = 3.0f;
+
+    private UnityEngine.Vector3 memoOffset = new UnityEngine.Vector3(-7.0f, 3.0f, 0.0f);
+
+    public List<GameObject> playerMemos = new List<GameObject>();
+
+    public void OnButtonClicked_ShowMemos()
     {
-        Instantiate(inTarget, spawnPoint);
+        int memosNumber = mainPlayer.GetNumOfMemos();
+        for(int i = 0; i < memosNumber; i++)
+        {
+            playerMemos.Add(mainPlayer.GetMemos(i));
+            Instantiate(playerMemos[i], memoOffset, UnityEngine.Quaternion.identity);
+            memoOffset.x += memoGap;
+        }
+    }
+
+    public void OnButtonClicked_DeleteMemos()
+    {
+        for(int i = 0; i < playerMemos.Count;i++)
+        {
+            Destroy(playerMemos[i]);
+        }
     }
 }
