@@ -7,12 +7,21 @@ using UnityEngine.UI;
 
 public class TaskBar : MonoBehaviour
 {
-    public GameObject currentScreen;
-    public GameObject powerButton;
-    public GameObject clock;
-    public GameObject studioDirect;
-    public GameObject communityDirect;
-    public GameObject wikiDirect;
+    [SerializeField] private GameObject studioScreen;
+    [SerializeField] private GameObject communityScreen;
+    [SerializeField] private GameObject wikiScreen;
+
+    [SerializeField] private Text clock;
+
+    [SerializeField] private string currentScreenName;
+    
+    
+
+    private void Start()
+    {
+        currentScreenName = studioScreen.name;
+        clock = GetComponentInChildren<Text>();
+    }
 
     public void SetScreen(string siteName)
     {
@@ -20,15 +29,41 @@ public class TaskBar : MonoBehaviour
         {
             case "Studio":
                 Debug.Log("Studio opened");
-                break;
+                if (currentScreenName == "Studio Screen") break;
+                else
+                {
+                    communityScreen.SetActive(false);
+                    wikiScreen.SetActive(false);
+                    studioScreen.SetActive(true);
+                    currentScreenName = studioScreen.name;
+                    break;
+                }
+                
 
             case "Community":
                 Debug.Log("Community opened");
-                break;
+                if (currentScreenName == "Community Screen") break;
+                else
+                {
+                    studioScreen.SetActive(false);
+                    wikiScreen.SetActive(false);
+                    communityScreen.SetActive(true);
+                    currentScreenName = communityScreen.name;
+                    break;
+                }
+                
 
             case "Wiki":
                 Debug.Log("Wiki opened");
-                break;
+                if (currentScreenName == "Wiki Screen") break;
+                else
+                {
+                    studioScreen.SetActive(false);
+                    communityScreen.SetActive(false);
+                    wikiScreen.SetActive(true);
+                    currentScreenName = wikiScreen.name;
+                    break;
+                }
         }
     }
 }
