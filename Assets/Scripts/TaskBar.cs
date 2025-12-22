@@ -23,6 +23,10 @@ public class TaskBar : MonoBehaviour
         clock = GetComponentInChildren<Text>();
     }
 
+    public void Update()
+    {
+        clock.text = TimeManager.Instance.GetTime();
+    }
     public void SetScreen(string siteName)
     {
         switch (siteName)
