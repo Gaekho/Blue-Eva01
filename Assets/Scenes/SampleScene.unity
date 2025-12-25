@@ -2544,6 +2544,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f459094890810de45a75ae5a553016c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _realtimePerGame10Minute: 5
+  _startHour: 9
+  _startMinute: 40
 --- !u!4 &1592177676
 Transform:
   m_ObjectHideFlags: 0
