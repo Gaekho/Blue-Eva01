@@ -16,7 +16,10 @@ public class Investigaion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetMouseButtonDown(0))
+        {
+            InfoScreenUnactivate();
+        }
     }
 
     public GameObject memoWithText;
@@ -42,6 +45,9 @@ public class Investigaion : MonoBehaviour
 
     public List<GameObject> playerMemos = new List<GameObject>();
 
+    public GameObject infoScreen;
+
+
     public void OnButtonClicked_ShowMemos()
     {
         int memosNumber = mainPlayer.GetNumOfMemos();
@@ -55,9 +61,11 @@ public class Investigaion : MonoBehaviour
 
     public void OnButtonClicked_DeleteMemos()
     {
-        for(int i = 0; i < playerMemos.Count;i++)
-        {
-            Destroy(playerMemos[i]);
-        }
+        infoScreen.SetActive(true);
+    }
+
+    private void InfoScreenUnactivate()
+    {
+        infoScreen.SetActive(false);
     }
 }
