@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6894222806502228668, guid: 289aeb9372e9c0b4686867941b789c83, type: 3}
       propertyPath: m_Text
-      value: Hello, World!
+      value: "\uACE0\uC591\uC774"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
