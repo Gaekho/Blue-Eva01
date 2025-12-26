@@ -6,7 +6,7 @@ public class TimeManager : MonoBehaviour
 {
     public static TimeManager Instance { get; private set; }
 
-    [Header("Time Setting")]
+    [Header("Time Setting (Seconds)")]
     [SerializeField] private float _realtimePerGame10Minute = 10f;
 
     [Header("Initial Time")]
@@ -16,9 +16,7 @@ public class TimeManager : MonoBehaviour
     private int _hour;
     private int _minute;
     private float _realAccum;
-    public bool isRunning { get; private set; } = true;
-    public int Hour { get => _hour; }
-    public int Minute { get => _minute; }
+    private bool isRunning { get; set; } = true;
 
     #region Private Methods
     private TimeManager() { }
@@ -63,17 +61,25 @@ public class TimeManager : MonoBehaviour
 
     public void PauseTime()
     {
-
+        isRunning = false;
     }
 
     public void ResumeTime()
     {
-
+        isRunning=true;
     }
 
     public void SpendTime(int min)
     {
-
+        int tempH = min / 60;
+        int tempM = min % 60;
+        _hour += tempH;
+        _minute += tempM;
+        if (_minute >= 60)
+        {
+            _minute -= 60;
+            _hour += 1;
+        }
     }
     #endregion
 }

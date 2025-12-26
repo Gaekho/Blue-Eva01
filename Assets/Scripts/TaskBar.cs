@@ -7,18 +7,21 @@ using UnityEngine.UI;
 
 public class TaskBar : MonoBehaviour
 {
+    [Header ("Screens")]
     [SerializeField] private GameObject studioScreen;
     [SerializeField] private GameObject communityScreen;
     [SerializeField] private GameObject wikiScreen;
 
+    [Header ("UI Elements in TaskBar")]
     [SerializeField] private Text clock;
-
+    [SerializeField] private Dropdown powerButton;
     [SerializeField] private string currentScreenName;
     
     
 
     private void Start()
     {
+        powerButton.value = 2;
         currentScreenName = studioScreen.name;
         clock = GetComponentInChildren<Text>();
     }
@@ -27,47 +30,17 @@ public class TaskBar : MonoBehaviour
     {
         clock.text = TimeManager.Instance.GetTime();
     }
-    public void SetScreen(string siteName)
+
+    public void PowerChange()
     {
-        switch (siteName)
+        switch (powerButton.value)
         {
-            case "Studio":
-                Debug.Log("Studio opened");
-                if (currentScreenName == "Studio Screen") break;
-                else
-                {
-                    communityScreen.SetActive(false);
-                    wikiScreen.SetActive(false);
-                    studioScreen.SetActive(true);
-                    currentScreenName = studioScreen.name;
-                    break;
-                }
-                
-
-            case "Community":
-                Debug.Log("Community opened");
-                if (currentScreenName == "Community Screen") break;
-                else
-                {
-                    studioScreen.SetActive(false);
-                    wikiScreen.SetActive(false);
-                    communityScreen.SetActive(true);
-                    currentScreenName = communityScreen.name;
-                    break;
-                }
-                
-
-            case "Wiki":
-                Debug.Log("Wiki opened");
-                if (currentScreenName == "Wiki Screen") break;
-                else
-                {
-                    studioScreen.SetActive(false);
-                    communityScreen.SetActive(false);
-                    wikiScreen.SetActive(true);
-                    currentScreenName = wikiScreen.name;
-                    break;
-                }
+            case 0:
+                Debug.Log("Less power mode ON");
+                break;
+            case 1:
+                Debug.Log("Power Off");
+                break;
         }
     }
 }

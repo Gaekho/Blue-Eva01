@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,7 +8,7 @@ public class StudioUIManager : MonoBehaviour
 {
     public int subscriber { get; private set; }
     public Text subscribertxt;
-    public InputField articleField;
+    public TMP_InputField inputField;
 
     // Start is called before the first frame update
     void Start()
