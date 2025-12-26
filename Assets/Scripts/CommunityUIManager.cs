@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,14 +22,34 @@ public class CommunityUIManager : MonoBehaviour
     [SerializeField] private Color clickedColor = Color.red;
     [SerializeField] private int currentIndex;
 
-    private bool[] clickedFlags;
+    private bool[] clickedFlags = new bool[20];
 
+    
+
+    void Start()
+    {
+        currentIndex = 20;
+        for(int i = 0; i < 20; i++)
+        {
+            buttonTextList[i].text = contentsList[i].Title;
+            clickedFlags[i] = false;
+        }
+    }
+
+    void Update()
+    {
+        
+    }
+
+#region public methods
     public void MainToContents(int buttonIndex)
     {
         content.SetActive(true);
         Ctitle.text = contentsList[buttonIndex].Title;
         Ctext.text = contentsList[buttonIndex].Content;
         currentIndex = buttonIndex;
+
+        CheckVisited();
     }
 
     public void ToMain()
@@ -39,30 +60,38 @@ public class CommunityUIManager : MonoBehaviour
 
     public void ToNextContents()
     {
+        if (currentIndex == 19) return;
+
         currentIndex += 1;
         Ctitle.text = contentsList[currentIndex].Title;
         Ctext.text = contentsList[currentIndex].Content;
+
+        CheckVisited();
     }
 
     public void ToPreviousContents()
     {
+        if (currentIndex == 0) return;
+
         currentIndex -= 1;
         Ctitle.text = contentsList[currentIndex].Title;
         Ctext.text = contentsList[currentIndex].Content;
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        currentIndex = 20;
-        for(int i = 0; i < 2; i++)
-        {
-            buttonTextList[i].text = contentsList[i].Title;
-        }
+
+        CheckVisited();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void CheckVisited()
     {
-        
+        if (clickedFlags[currentIndex] == true)
+        {
+            return;
+        }
+        else
+        {
+            clickedFlags[currentIndex] = true;
+            buttonTextList[currentIndex].color = clickedColor;
+        }
     }
+    
+#endregion
 }

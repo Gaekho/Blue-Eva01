@@ -14,7 +14,7 @@ public class CommunityContents : ScriptableObject
     [SerializeField] private ContentsType type;
     [SerializeField] private int index;
     [SerializeField] private string title;
-    [SerializeField] private string content;
+    [SerializeField] [TextArea(0,10)] private string content;
 
     #region Cache
     public ContentsType Type => type;
