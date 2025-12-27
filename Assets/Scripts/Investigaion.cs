@@ -48,16 +48,6 @@ public class Investigaion : MonoBehaviour
     public GameObject infoScreen;
 
 
-    public void OnButtonClicked_ShowMemos()
-    {
-        int memosNumber = mainPlayer.GetNumOfMemos();
-        for(int i = 0; i < memosNumber; i++)
-        {
-            playerMemos.Add(mainPlayer.GetMemos(i));
-            Instantiate(playerMemos[i], memoOffset, UnityEngine.Quaternion.identity);
-            memoOffset.x += memoGap;
-        }
-    }
 
     public void OnButtonClicked_DeleteMemos()
     {
