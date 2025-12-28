@@ -16,14 +16,14 @@ public class Player : MonoBehaviour
 
     }
 
-    private List<GameObject> memos = new List<GameObject>();
+    private List<MemoInfos> memos = new List<MemoInfos>();
 
-    public void AddNewMemo(GameObject newMemo)
+    public void AddNewMemo(MemoInfos newMemo)
     {
         memos.Add(newMemo);     //¸Þ¸ð È¹µæ½Ã ÀúÀå
     }
 
-    public GameObject GetMemos(int memoIndex)
+    public MemoInfos GetMemos(int memoIndex)
     {
         return memos[memoIndex];
     }

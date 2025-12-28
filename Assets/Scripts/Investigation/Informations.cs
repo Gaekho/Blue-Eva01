@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements.Experimental;
 
 public enum InfoType
 {
@@ -8,10 +10,10 @@ public enum InfoType
     Cat
 }
 
-[CreateAssetMenu(fileName = "InteractInfomation", menuName = "Blue Eva01/Investigation/Infomation")]
+[CreateAssetMenu(fileName = "Community Contents", menuName = "Blue Eva01/Community/Contents", order = 0)]
 public class Informations : ScriptableObject
 {
-    [Header("Investigation Inform")]
     [SerializeField] public InfoType infoName;
     [SerializeField] public TextAsset infoDetail;
+    [SerializeField] public Sprite buttonImage;
 }
