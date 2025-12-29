@@ -39,6 +39,7 @@ public class TaskBar : MonoBehaviour
                 Debug.Log("Less power mode ON");
                 break;
             case 1:
+                GameManager.Instance.StartReward();
                 Debug.Log("Power Off");
                 break;
         }

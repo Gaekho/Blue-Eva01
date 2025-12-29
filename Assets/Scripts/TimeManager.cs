@@ -59,6 +59,11 @@ public class TimeManager : MonoBehaviour
         return _hour.ToString("00") + ":" + _minute.ToString("00");
     }
 
+    public void SetTime(int h, int m)
+    {
+        _hour = h; _minute = m;
+    }
+
     public void PauseTime()
     {
         isRunning = false;
