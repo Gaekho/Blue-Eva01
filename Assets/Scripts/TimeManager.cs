@@ -16,6 +16,9 @@ public class TimeManager : MonoBehaviour
     private int _hour;
     private int _minute;
     private float _realAccum;
+
+    public int Hour => _hour;
+    public int Minute => _minute;
     private bool isRunning { get; set; } = true;
 
     #region Private Methods
