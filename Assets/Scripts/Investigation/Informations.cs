@@ -7,7 +7,9 @@ using UnityEngine.UIElements.Experimental;
 public enum InfoType
 {
     None,
-    Cat
+    Cat,
+    Grandma,
+    Sun,
 }
 
 [CreateAssetMenu(fileName = "Community Contents", menuName = "Blue Eva01/Community/Contents", order = 0)]
@@ -15,5 +17,5 @@ public class Informations : ScriptableObject
 {
     [SerializeField] public InfoType infoName;
     [SerializeField] public TextAsset infoDetail;
-    [SerializeField] public Sprite buttonImage;
+    [SerializeField] public MemoInfos memoToAdd;
 }
