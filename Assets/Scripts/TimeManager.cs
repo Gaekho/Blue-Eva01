@@ -23,7 +23,7 @@ public class TimeManager : MonoBehaviour
 
     #region Private Methods
     private TimeManager() { }
-    private void Awake()
+    private void Start()
     {
         if (Instance == null)
         {

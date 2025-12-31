@@ -26,4 +26,9 @@ public class RewardPanel : MonoBehaviour
         panelAnimator.SetTrigger("Fade In");
     }
 
+    public void NextDay()
+    {
+        GameManager.Instance.ToNextDay();
+    }
+
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private TimeManager timeManager;
     [SerializeField] private Canvas rewardCanvas;
     [SerializeField] private GameObject rewardTextGroup;
+    [SerializeField] private StudioUIManager studio;
+
+    [Header("Reward Parameters")]
+    [SerializeField] private TMP_Text subscriberNo;
+    [SerializeField] private TMP_Text visitsNo;
+    [SerializeField] private TMP_Text revenueNo;
 
     public bool isDayrunning;
     public bool nextDayOn;
@@ -16,7 +23,7 @@ public class GameManager : MonoBehaviour
     public Button nextDayButton;
     private GameManager() { }
 
-    private void Awake()
+    private void Start()
     {
         if(Instance == null)
         {
@@ -31,12 +38,14 @@ public class GameManager : MonoBehaviour
         rewardTextGroup.gameObject.SetActive(false);
 
         isDayrunning = false;
-    }
 
-    private void Start()
-    {
         ResetDay();
     }
+
+   // private void Start()
+   // {
+   //     ResetDay();
+   // }
 
 
 
@@ -76,11 +85,17 @@ public class GameManager : MonoBehaviour
     private IEnumerator RewardRoutine()
     {
         rewardPanel.gameObject.SetActive(true);
-        rewardPanel.FadeOut();
+        subscriberNo.text = "+" + ValuationAPI.valuationJSON["Subscriber Growth"].ToString();
+        visitsNo.text = ValuationAPI.valuationJSON["Views"].ToString();
+        revenueNo.text = ValuationAPI.valuationJSON["Revenue"].ToString() + "$";
+
+        rewardPanel.FadeOut(); 
         yield return new WaitForSeconds(1f);
         rewardTextGroup.SetActive(true);
         /* api request value and change datas */
         yield return new WaitForSeconds(3f);
+        PlayerData.Subscriber += int.Parse((ValuationAPI.valuationJSON["Subscriber Growth"].ToString()));
+        studio.SetSub();
         nextDayButton.interactable = true;
 
         while(nextDayOn == false)
