@@ -37,9 +37,12 @@ public class TaskBar : MonoBehaviour
         {
             case 0:
                 Debug.Log("Less power mode ON");
+                SceneLoaderManager.Instance.ToggleAB();
                 break;
             case 1:
+                GameManager.Instance.isDayrunning = false;
                 Debug.Log("Power Off");
+                powerButton.value = 2;
                 break;
         }
     }
