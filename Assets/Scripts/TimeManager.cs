@@ -16,11 +16,14 @@ public class TimeManager : MonoBehaviour
     private int _hour;
     private int _minute;
     private float _realAccum;
+
+    public int Hour => _hour;
+    public int Minute => _minute;
     private bool isRunning { get; set; } = true;
 
     #region Private Methods
     private TimeManager() { }
-    private void Awake()
+    private void Start()
     {
         if (Instance == null)
         {
@@ -57,6 +60,11 @@ public class TimeManager : MonoBehaviour
     public string GetTime()
     {
         return _hour.ToString("00") + ":" + _minute.ToString("00");
+    }
+
+    public void SetTime(int h, int m)
+    {
+        _hour = h; _minute = m;
     }
 
     public void PauseTime()

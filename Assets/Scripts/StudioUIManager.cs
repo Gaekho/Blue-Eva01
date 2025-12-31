@@ -13,7 +13,7 @@ public class StudioUIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        subscriber = 25481;
+        subscriber = PlayerData.Subscriber;
         subscribertxt.text = CalcSub();
     }
 
@@ -27,10 +27,16 @@ public class StudioUIManager : MonoBehaviour
         return temp.ToString("N2") + "K";
     }
 
-    public int UpdateSub(int change)
+    public int UpdateSub()
     {
-        subscriber += change;
+        subscriber = PlayerData.Subscriber;
         return subscriber;
+    }
+
+    public void SetSub()
+    {
+        subscriber = UpdateSub();
+        subscribertxt.text = CalcSub();
     }
     void Update()
     {
