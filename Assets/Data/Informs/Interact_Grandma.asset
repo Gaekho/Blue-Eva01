@@ -10,9 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d2f521f3dfc94846965b8ca7bb23b07, type: 3}
-  m_Name: InteractInfomation
+  m_Name: Interact_Grandma
   m_EditorClassIdentifier: 
-  type: 0
-  index: 0
+  infoName: 2
   infoDetail: {fileID: 4900000, guid: d9b5818fea7e75c448d7bc8dd98010ee, type: 3}
-  memoName: 1
+  memoToAdd: {fileID: 11400000, guid: af3e2cb7caba87b4da1b11efb04dd400, type: 2}
